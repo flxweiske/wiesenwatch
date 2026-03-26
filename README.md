@@ -76,37 +76,7 @@ docker run --env-file .env wiesenwatch
 
 ## Automated Daily Runs with GitHub Actions
 
-The recommended way to run Wiesenwatch on a schedule — free, no infrastructure required.
-
-Create `.github/workflows/wiesenwatch.yml`:
-
-```yaml
-name: Wiesenwatch
-
-on:
-  schedule:
-    - cron: '0 5 * * *'
-  workflow_dispatch:
-
-jobs:
-  run:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build and run container
-        run: |
-          docker build -t wiesenwatch .
-          docker run \
-            -e MAIL=${{ secrets.MAIL }} \
-            -e KEY=${{ secrets.KEY }} \
-            -e LATITUDE=${{ secrets.LATITUDE }} \
-            -e LONGITUDE=${{ secrets.LONGITUDE }} \
-            -e RAIN_SUM_THRESHOLD=${{ vars.RAIN_SUM_THRESHOLD }} \
-            wiesenwatch
-```
-
-Add `MAIL`, `KEY`, `LATITUDE` and `LONGITUDE` as **Secrets** in your repository settings, and `RAIN_SUM_THRESHOLD` as **Variables**.
+The recommended way to run Wiesenwatch on a schedule for example with GitHub Actions. Add `MAIL`, `KEY`, `LATITUDE` and `LONGITUDE` as **Secrets** in your repository settings, and `RAIN_SUM_THRESHOLD` as **Variables**.
 
 ---
 

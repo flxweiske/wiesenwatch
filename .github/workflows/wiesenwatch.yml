@@ -1,0 +1,23 @@
+name: wiesenwatch
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and run container
+        run: |
+          docker build -t wiesenwatch .
+          docker run \
+            -e MAIL=${{ secrets.MAIL }} \
+            -e KEY=${{ secrets.KEY }} \
+            -e LATITUDE=${{ secrets.LATITUDE }} \
+            -e LONGITUDE=${{ secrets.LONGITUDE }} \
+            -e RAIN_SUM_THRESHOLD=${{ vars.RAIN_SUM_THRESHOLD }} \
+            wiesenwatch

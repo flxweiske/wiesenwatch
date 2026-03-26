@@ -88,9 +88,3 @@ Wiesenwatch uses Gmail SMTP to send emails. Google requires an App Password rath
 2. Go to [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
 3. Generate a new App Password
 4. Use the generated password as your `KEY` value — no quotes
-
----
-
-## License
-
-MIT

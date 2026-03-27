@@ -2,7 +2,7 @@ name: wiesenwatch
 
 on:
   schedule:
-    - cron: '31 11 * * *'
+    - cron: '31 4 * * *'
   workflow_dispatch:
 
 jobs:
